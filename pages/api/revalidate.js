@@ -1,4 +1,4 @@
-import { revalidate } from '@teleporthq/cms-mappers/wordpress/revalidate'
+import { revalidate } from '@teleporthq/cms-mappers/contentful/revalidate'
 
 export default async function handler(req, res) {
   try {
@@ -9,20 +9,40 @@ export default async function handler(req, res) {
     }
     await revalidate(req, async (data, contentType) => {
       switch (contentType) {
-        case 'post': {
+        case 'category': {
           try {
-            await res.revalidate(`/post`)
-            await res.revalidate(`/post/${data.slug}`)
+            await res.revalidate(`/categories/${data.id}`)
+            await res.revalidate(`/categories`)
           } catch (error) {
             console.log('Failed in clearing cache')
             console.log(error)
           }
           break
         }
-        case 'attachment': {
+        case 'author': {
           try {
-            await res.revalidate(`/attachment`)
-            await res.revalidate(`/attachment/${data.id}`)
+            await res.revalidate(`/authors/${data.id}`)
+            await res.revalidate(`/authors`)
+          } catch (error) {
+            console.log('Failed in clearing cache')
+            console.log(error)
+          }
+          break
+        }
+        case 'tag': {
+          try {
+            await res.revalidate(`/tags`)
+            await res.revalidate(`/tags/${data.id}`)
+          } catch (error) {
+            console.log('Failed in clearing cache')
+            console.log(error)
+          }
+          break
+        }
+        case 'blogPost': {
+          try {
+            await res.revalidate(`/blog/${data.slug}`)
+            await res.revalidate(`/blog`)
           } catch (error) {
             console.log('Failed in clearing cache')
             console.log(error)

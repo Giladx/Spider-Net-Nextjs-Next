@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 
 import PropTypes from 'prop-types'
 
@@ -7,15 +6,11 @@ const Footer = (props) => {
   return (
     <>
       <footer className={`footer-footer ${props.rootClassName} `}>
-        <Link href="/">
-          <a className="footer-link">
-            <img
-              alt={props.imageAlt}
-              src={props.imageSrc}
-              className="footer-image"
-            />
-          </a>
-        </Link>
+        <img
+          alt={props.imageAlt}
+          src={props.imageSrc}
+          className="footer-image"
+        />
         <div className="footer-container">
           <div className="footer-container1">
             <span id="Year" className="footer-text">
@@ -27,7 +22,7 @@ const Footer = (props) => {
             href={props.linkText}
             target="_blank"
             rel="noreferrer noopener"
-            className="footer-link1"
+            className="footer-link"
           >
             {props.text2}
           </a>
@@ -59,9 +54,6 @@ const Footer = (props) => {
             padding-bottom: var(--dl-space-space-twounits);
             justify-content: space-between;
             background-color: #111;
-          }
-          .footer-link {
-            display: contents;
           }
           .footer-image {
             cursor: pointer;
@@ -95,7 +87,7 @@ const Footer = (props) => {
             font-family: 'Exo 2';
             margin-right: var(--dl-space-space-unit);
           }
-          .footer-link1 {
+          .footer-link {
             color: rgb(255, 255, 255);
             cursor: pointer;
             font-family: 'Impact';
@@ -168,7 +160,7 @@ const Footer = (props) => {
               margin-left: var(--dl-space-space-unit);
               margin-right: var(--dl-space-space-unit);
             }
-            .footer-link1 {
+            .footer-link {
               text-align: center;
               margin-left: var(--dl-space-space-unit);
               margin-right: var(--dl-space-space-unit);
@@ -196,7 +188,7 @@ const Footer = (props) => {
               margin-right: 0px;
               margin-bottom: var(--dl-space-space-unit);
             }
-            .footer-link1 {
+            .footer-link {
               margin-left: 0px;
               margin-right: 0px;
               margin-bottom: var(--dl-space-space-unit);
